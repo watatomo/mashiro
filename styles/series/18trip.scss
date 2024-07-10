@@ -1,0 +1,88 @@
+@use "sass:color";
+@use "sass:meta";
+@use "sass:string";
+
+@mixin characters($args...) {
+    @each $name, $color in meta.keywords($args) {
+        [data-character="#{$name}"] {
+            --color: #{$color};
+            --hue: #{color.hue($color)};
+            --icon: url("https://cdn.jsdelivr.net/gh/kagukura/img/icons/#{string.to-lower-case($name)}.webp");
+            --msg-icon: url("https://cdn.jsdelivr.net/gh/kagukura/img/msg_icons/#{string.to-lower-case($name)}.webp");
+        }
+    }
+}
+
+.obj {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+
+    img {
+        height: 175px;
+        width: auto;
+        margin: 0 !important;
+        border-radius: 0;
+    }
+}
+
+.cg {
+    img {
+        aspect-ratio: 19.5 / 9;
+        object-fit: cover;
+
+        &:hover {
+            aspect-ratio: 64 / 41;
+        }
+    }
+}
+
+.sepia {
+    filter: sepia(75%) brightness(80%);
+}
+
+.green {
+    color: rgb(var(--green));
+}
+
+p.big {
+    font-size: 1.35rem !important;
+}
+
+@include characters(
+    $Kaede: #c8ff46,
+    $Momiji: #c8ff46,
+    $Renga: #dcaa3c,
+    $Kafka: #916eff,
+    $Ten: #c8d7eb,
+    $Yukikaze: #46beff,
+    $Liguang: #ff3214,
+    $Akuta: #ff8232,
+    $Kiroku: #8c14dc,
+    $Nanaki: #1ebeb4,
+    $Muneuji: #ffa5d2,
+    $Ushio: #96f032,
+    $Raito: #00693c,
+    $Kinari: #ebc8ff,
+    $Chihiro: #46eb9b,
+    $Tao: #468cbe,
+    $Kuguri: #d20046,
+    $Nagi: #463ce6,
+    $Toi: #ffdc3c,
+    $Ryui: #ff3c6e,
+    $Yodaka: #f0e6aa,
+    $Netaro: #ff32c8,
+    $Yachiyo: #8eaff0,
+    $Sakujiro: #fffc93,
+    $Nayuki: #ffa7a2,
+    $Daniel: #a27fc5,
+    $Kotonojo: #c5d8c1,
+    $Koharu: #c5d8c1,
+    $Minamo: #c5d8c1,
+    $Hakkei: #c5d8c1,
+    $Hassaku: #c5d8c1,
+    $Jun: #c5d8c1,
+    $Yumenosuke: #c5d8c1,
+    $Kodama: #c5d8c1,
+    $Yunyun: #c5d8c1
+);

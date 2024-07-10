@@ -1,0 +1,12 @@
+---
+import DiffClient from "./DiffClient";
+interface Props {
+    g: "m" | "f";
+}
+
+const { g } = Astro.props;
+---
+
+<DiffClient g={g} client:load>
+    <slot />
+</DiffClient>

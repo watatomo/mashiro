@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    loc?: string;
+    fb?: "start" | "end";
+    timeskip?: boolean;
+}
+
+const { loc, fb, timeskip } = Astro.props;
+---
+
+<div class="divider">
+    <div>
+        {
+            loc && (
+                <>
+                    <Icon name="map-pin" />
+                    {loc}
+                </>
+            )
+        }
+        {
+            fb && (
+                <>
+                    <Icon name="history" />
+                    <strong>
+                        Flashback&nbsp;{fb === "start" ? "Start" : "End"}
+                    </strong>
+                </>
+            )
+        }
+        {
+            timeskip && (
+                <>
+                    <Icon name="clock" />
+                    <strong>Timeskip</strong>
+                </>
+            )
+        }
+    </div>
+</div>
+
+<style lang="scss">
+    .divider {
+        display: grid;
+        margin: 1em 0;
+        align-items: center;
+        grid-template: 1fr / 1fr auto 1fr;
+        gap: 5px;
+        color: var(--text-primary);
+
+        &:first-child {
+            margin: 0 0 1em;
+        }
+
+        > div,
+        svg {
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        > div {
+            margin-right: 3px;
+        }
+
+        svg {
+            font-size: 1.5rem;
+            margin-right: 0.2rem;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            height: 0.1em;
+            width: 100%;
+            display: block;
+            border-bottom: solid var(--bubble-line-color) 1px;
+        }
+    }
+</style>

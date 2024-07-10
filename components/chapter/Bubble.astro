@@ -1,0 +1,10 @@
+---
+import BubbleClient from "./Bubble/BubbleClient";
+type Props = any;
+
+const props: Props = Astro.props;
+---
+
+<BubbleClient {...props} client:load>
+    <slot />
+</BubbleClient>

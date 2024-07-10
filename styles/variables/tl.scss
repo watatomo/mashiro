@@ -1,0 +1,74 @@
+@use "sass:color";
+@use "../palette/catppuccin/latte";
+@use "../palette/catppuccin/mocha";
+
+@function toRGB($color) {
+    @return red($color), green($color), blue($color);
+}
+
+html {
+    --bubble-text: rgb(var(--text-primary));
+    --bubble-text-thought: rgb(var(--text-secondary));
+    --bubble-bg-default: #{latte.$surface0};
+    --bubble-icon-border: 12px 4px;
+    --bubble-icon-size: 50px;
+    --bubble-icon-sizeSmall: 45px;
+    --bubble-name-case: uppercase;
+    --bubble-name-text: rgb(var(--text-secondary));
+    --bubble-line-border: 15px;
+    --bubble-line-size: 1rem;
+    --bubble-line-gap: 0.15rem;
+    --bubble-line-color: rgb(var(--blockquote-color));
+    --box-radio-bg: rgba(#{toRGB(latte.$yellow)}, 0.15);
+    --phone-case-bg: #{latte.$blue};
+    --phone-screen-bg: #{latte.$base};
+    --phone-header-bg: #{latte.$sky};
+    --phone-header-text: #{latte.$base};
+    --phone-sent-bg: #{latte.$sky};
+    --phone-sent-text: #{latte.$base};
+    --phone-received-bg: #{latte.$surface0};
+    --phone-received-text: #{latte.$text};
+    --paper-bg: #{latte.$surface0};
+    --paper-text: #{latte.$text};
+
+    --green: #{toRGB(latte.$green)};
+
+    [data-character] {
+        --bubble-bg: hsl(var(--hue), 21%, 83%);
+    }
+
+    [data-story-theme="mauve"] {
+        --si-color: #{toRGB(latte.$mauve)};
+    }
+
+    [data-story-theme="sky"] {
+        --si-color: #{toRGB(latte.$sky)};
+    }
+
+    [data-story-theme="blue"] {
+        --si-color: #{toRGB(latte.$blue)};
+    }
+}
+
+html.dark {
+    --bubble-bg-default: #{mocha.$surface0};
+    --box-radio-bg: rgba(#{toRGB(mocha.$yellow)}, 0.15);
+
+    --green: #{toRGB(mocha.$green)};
+
+    [data-character] {
+        --bubble-bg: hsl(var(--hue), 21%, 23%);
+    }
+
+    [data-story-theme="mauve"] {
+        --si-color: #{toRGB(mocha.$mauve)};
+    }
+
+    [data-story-theme="sky"] {
+        --si-color: #{toRGB(mocha.$sky)};
+    }
+
+    [data-story-theme="blue"] {
+        --si-color: #{toRGB(mocha.$blue)};
+    }
+}

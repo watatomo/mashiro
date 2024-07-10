@@ -1,0 +1,115 @@
+---
+interface Props {
+    to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<div class="phone">
+    <div class="msg-header">{to}</div>
+    <div class="msg">
+        <slot />
+    </div>
+</div>
+
+<style lang="scss" is:global>
+    .phone {
+        max-width: 350px;
+        margin: 0 auto;
+        background-color: var(--phone-case-bg);
+        padding: 5px;
+        border-radius: 30px;
+        filter: var(--img-filter);
+
+        .msg {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--phone-screen-bg);
+            padding: 15px;
+            border-radius: 0 0 25px 25px;
+            border-right: 5px solid #000;
+            border-left: 5px solid #000;
+            border-bottom: 5px solid #000;
+
+            &-header {
+                font-size: 1.1rem;
+                display: flex;
+                justify-content: center;
+                background-color: var(--phone-header-bg);
+                color: var(--phone-header-text);
+                border-radius: 25px 25px 0 0;
+                padding: 15px;
+                border-top: 5px solid #000;
+                border-right: 5px solid #000;
+                border-left: 5px solid #000;
+            }
+        }
+
+        p {
+            max-width: calc(350px / 2);
+            padding: 10px;
+            line-height: 1.1;
+            word-wrap: break-word;
+            border-radius: 15px;
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-bottom: 1px;
+            }
+        }
+
+        .sent {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            p {
+                background-color: var(--phone-sent-bg);
+                color: var(--phone-sent-text);
+
+                &:last-child {
+                    border-bottom-right-radius: 3px;
+                }
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+
+        [data-character] {
+            display: inline-grid;
+            grid-template-columns: auto 1fr;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            p {
+                background-color: var(--phone-received-bg);
+                color: var(--phone-received-text);
+
+                &:last-child {
+                    border-bottom-left-radius: 3px;
+                }
+            }
+
+            &::before {
+                content: "";
+                align-self: flex-end;
+                margin-right: 8px;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: 100%/100% var(--msg-icon);
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+</style>

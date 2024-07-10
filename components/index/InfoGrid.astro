@@ -1,0 +1,36 @@
+---
+interface Props {
+    chapterTotal: number;
+    translators: Translators[];
+    proofreaders: Proofreaders[];
+}
+
+const { chapterTotal, translators, proofreaders } = Astro.props;
+---
+
+<article class="translators">
+    <div class="label">Translation</div>
+    <div class="value">
+    {
+        translators.map((t, index) => (
+            <>
+                <!-- prettier-ignore -->
+                <a href={t.href}>{t.name}</a>{index + 1 === translators.length ? "" : ","}
+            </>
+        ))
+    }
+    </div>
+</article>
+<article class="proofreaders">
+    <div class="label">Proofreading</div>
+    <div class="value">
+    {
+        proofreaders.map((p, index) => (
+            <>
+                <!-- prettier-ignore -->
+                <a href={p.href}>{p.name}</a>{index + 1 === proofreaders.length ? "" : ","}
+            </>
+        ))
+    }
+    </div>
+</article>

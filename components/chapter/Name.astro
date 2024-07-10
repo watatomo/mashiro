@@ -1,0 +1,16 @@
+---
+import NameClient from "./NameClient";
+
+// <!-- function Name({first, last}: Props){ return <NameClient first={first}
+// last={last} /> } -->
+// <!-- /above but as an astro component -->
+
+interface Props {
+    first?: boolean;
+    last?: boolean;
+}
+
+const { first, last } = Astro.props;
+---
+
+<NameClient first={first} last={last} client:load />

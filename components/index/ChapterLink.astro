@@ -1,0 +1,18 @@
+---
+interface Props {
+    slug: string;
+    chapters: Chapters[];
+}
+
+const { slug, chapters } = Astro.props;
+---
+
+{
+    chapters.map((chapter) => {
+        return (
+            <li class="part">
+                <a href={`/tl/${slug}/${chapter.href}`}>{chapter.label}</a>
+            </li>
+        );
+    })
+}
